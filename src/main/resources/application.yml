@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: user-app
+server:
+  port: 8888
