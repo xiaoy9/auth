@@ -1,4 +1,4 @@
-package com.xiao9.infrastruction.util;
+package com.xiao9.infrastruction;
 
 public class AuthoritiesConstants {
 

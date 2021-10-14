@@ -1,6 +1,5 @@
 package com.xiao9.infrastruction.config;
 
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -21,7 +20,6 @@ public class Swagger3Config {
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.withMethodAnnotation(Operation.class))
                 .apis(RequestHandlerSelectors.basePackage("com.xiao9.facade.rest"))
                 .paths(PathSelectors.ant("/api/**"))
                 .build();
