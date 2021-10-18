@@ -1,4 +1,4 @@
-package com.xiao9.infrastruction;
+package com.xiao9.user.infrastruction;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,24 +9,27 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-/**
- * Utility class for Spring Security.
- */
+
 public final class SecurityUtils {
 
     private SecurityUtils() {
     }
 
     /**
-     * Get the login of the current user.
+     * 获取当前用户的登录名
      *
-     * @return the login of the current user.
+     * @return 当前用户的登录名
      */
     public static Optional<String> getCurrentUserLogin() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return Optional.ofNullable(extractPrincipal(securityContext.getAuthentication()));
     }
 
+
+    /**
+     * 解析 authentication
+     * @return 返回 authentication 中 principal的值, 没有则返回 null
+     */
     private static String extractPrincipal(Authentication authentication) {
         if (authentication == null) {
             return null;
@@ -41,9 +44,9 @@ public final class SecurityUtils {
 
 
     /**
-     * Get the JWT of the current user.
+     * 获取当前用户的JWT
      *
-     * @return the JWT of the current user.
+     * @return 当前用户的JWT
      */
     public static Optional<String> getCurrentUserJWT() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
@@ -52,10 +55,11 @@ public final class SecurityUtils {
             .map(authentication -> (String) authentication.getCredentials());
     }
 
+
     /**
-     * Check if a user is authenticated.
+     * 判断当前用户是否已经登录
      *
-     * @return true if the user is authenticated, false otherwise.
+     * @return 如果是通过验证的用户则返回true
      */
     public static boolean isAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -64,17 +68,15 @@ public final class SecurityUtils {
     }
 
     /**
-     * If the current user has a specific authority (security role).
-     * <p>
-     * The name of this method comes from the {@code isUserInRole()} method in the Servlet API.
+     * 当前用户是否拥有某种角色
      *
-     * @param authority the authority to check.
-     * @return true if the current user has the authority, false otherwise.
+     * @param role 角色名
+     * @return 如果包含角色返回true
      */
-    public static boolean isCurrentUserInRole(String authority) {
+    public static boolean isCurrentUserInRole(String role) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication != null &&
-            getAuthorities(authentication).anyMatch(authority::equals);
+            getAuthorities(authentication).anyMatch(role::equals);
     }
 
     private static Stream<String> getAuthorities(Authentication authentication) {

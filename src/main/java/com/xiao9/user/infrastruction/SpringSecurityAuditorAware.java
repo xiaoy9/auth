@@ -1,4 +1,4 @@
-package com.xiao9.infrastruction;
+package com.xiao9.user.infrastruction;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;

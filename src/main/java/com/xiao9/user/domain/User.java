@@ -1,4 +1,4 @@
-package com.xiao9.domain;
+package com.xiao9.user.domain;
 
 import lombok.Data;
 

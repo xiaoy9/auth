@@ -1,4 +1,4 @@
-package com.xiao9.infrastruction.po;
+package com.xiao9.user.infrastruction.po;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -12,6 +12,7 @@ import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Table(name = "users")
 public class UserPO extends AbstractAuditingEntity {
 
     @Id
@@ -25,6 +26,10 @@ public class UserPO extends AbstractAuditingEntity {
     @Size(min = 60, max = 60)
     @Column(name = "password_hash", length = 60, nullable = false)
     private String password;
+
+    @Size(min = 1, max = 127)
+    @Column(name = "nickname", length = 60, nullable = false)
+    private String nickname;
 
     @Email
     @Size(min = 5, max = 254)
@@ -53,8 +58,8 @@ public class UserPO extends AbstractAuditingEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "user_roles",
+            name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "roles", referencedColumnName = "name")})
+            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     private Set<RolePO> roles;
 }

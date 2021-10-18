@@ -1,4 +1,4 @@
-package com.xiao9.facade.rest;
+package com.xiao9.user.facade.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
