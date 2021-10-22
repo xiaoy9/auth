@@ -1,9 +1,9 @@
-package com.xiao9.user.infrastruction.security;
+package com.xiao9.user.infrastruction.security.error;
 
 import org.springframework.security.core.AuthenticationException;
 
 /**
- * This exception is thrown in case of a not activated user trying to authenticate.
+ * 用户未激活错误信息
  */
 public class UserNotActivatedException extends AuthenticationException {
 

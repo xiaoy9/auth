@@ -2,6 +2,7 @@ package com.xiao9.user.infrastruction.security;
 
 import com.xiao9.user.domain.IUserRepository;
 import com.xiao9.user.domain.User;
+import com.xiao9.user.infrastruction.security.error.UserNotActivatedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
