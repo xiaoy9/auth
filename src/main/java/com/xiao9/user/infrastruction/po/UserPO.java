@@ -3,6 +3,7 @@ package com.xiao9.user.infrastruction.po;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.Set;
 
+@Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "users")
@@ -56,10 +58,12 @@ public class UserPO extends AbstractAuditingEntity {
     @Column(name = "reset_date")
     private Instant resetDate = null;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
+    @BatchSize(size = 20)
     private Set<RolePO> roles;
 }
