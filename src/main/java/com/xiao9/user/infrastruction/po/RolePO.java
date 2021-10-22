@@ -6,10 +6,12 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Entity(name = "roles")
+@Entity
+@Table(name = "roles")
 public class RolePO extends AbstractAuditingEntity {
 
     // 角色名称

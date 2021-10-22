@@ -1,4 +1,4 @@
-package com.xiao9.user.infrastruction;
+package com.xiao9.user.infrastruction.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

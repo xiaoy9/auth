@@ -13,11 +13,9 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
-/**
- * Base abstract class for entities which will hold definitions for created, last modified, created by,
- * last modified by attributes.
- */
+
 @Data
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -33,7 +31,7 @@ public abstract class AbstractAuditingEntity implements Serializable {
     @CreatedDate
     @Column(name = "created_date", updatable = false)
     @JsonIgnore
-    private Instant createdDate = Instant.now();
+    private LocalDateTime createdDate = LocalDateTime.now();
 
     @LastModifiedBy
     @Column(name = "last_modified_by", length = 50)
@@ -43,6 +41,6 @@ public abstract class AbstractAuditingEntity implements Serializable {
     @LastModifiedDate
     @Column(name = "last_modified_date")
     @JsonIgnore
-    private Instant lastModifiedDate = Instant.now();
+    private LocalDateTime lastModifiedDate = LocalDateTime.now();
 
 }
