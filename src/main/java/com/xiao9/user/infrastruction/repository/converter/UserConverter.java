@@ -11,4 +11,6 @@ public interface UserConverter {
     UserConverter INSTANCE = Mappers.getMapper(UserConverter.class);
 
     User po2Entity(UserPO po);
+
+    UserPO entity2PO(User entity);
 }

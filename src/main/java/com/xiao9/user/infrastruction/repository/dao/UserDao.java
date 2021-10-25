@@ -12,5 +12,5 @@ public interface UserDao extends JpaRepository<UserPO, Long> {
     Optional<UserPO> findOneByLogin(String login);
 
     @EntityGraph(attributePaths = "roles")
-    Optional<UserPO> findOneByEmail(String email);
+    Optional<UserPO> findOneByEmailIgnoreCase(String email);
 }

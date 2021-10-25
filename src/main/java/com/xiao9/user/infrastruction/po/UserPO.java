@@ -8,7 +8,7 @@ import org.hibernate.annotations.BatchSize;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -18,7 +18,7 @@ import java.util.Set;
 public class UserPO extends AbstractAuditingEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(min = 1, max = 50)
@@ -56,7 +56,7 @@ public class UserPO extends AbstractAuditingEntity {
     private String resetKey;
 
     @Column(name = "reset_date")
-    private Instant resetDate = null;
+    private LocalDateTime resetDate = null;
 
     @JsonIgnore
     @ManyToMany

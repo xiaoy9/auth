@@ -1,9 +1,7 @@
 package com.xiao9.user.domain;
 
-import com.xiao9.user.infrastruction.po.RolePO;
 import lombok.Data;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -22,6 +20,9 @@ public class User {
     // 邮箱
     private String email;
 
+    // 昵称
+    private String nickname;
+
     // 激活标志
     private boolean activated = false;
 
@@ -29,7 +30,7 @@ public class User {
     private String imageUrl;
 
     // 用户角色
-    private Set<RolePO> roles;
+    private Set<Role> roles;
 
     // 用户激活码
     private String activationKey;
@@ -38,8 +39,14 @@ public class User {
     private String resetKey;
 
     // 重置日期
-    private Instant resetDate = null;
+    private LocalDateTime resetDate = null;
 
     // 创建日期
     private LocalDateTime createdDate;
+
+
+
+    public void register() {
+
+    }
 }

@@ -28,13 +28,13 @@ public class UserAuthService implements UserDetailsService {
         String lowercaseLogin = username.toLowerCase(Locale.ENGLISH);
         return userRepository.findByUsernameOrEmail(username)
                 .map(user-> createSpringSecurityUser(lowercaseLogin, user))
-                .orElseThrow(()-> new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the database"));
+                .orElseThrow(()-> new UsernameNotFoundException("用户: " + lowercaseLogin + " 在数据库中不存在！"));
     }
 
 
     private UserDetails createSpringSecurityUser(String lowercaseLogin, User user) {
         if(!user.isActivated()) {
-            throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
+            throw new UserNotActivatedException("用户: " + lowercaseLogin + " 处于未激活状态！");
         }
         List<GrantedAuthority> grantedAuthorities = user.getRoles().stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getName().startsWith("ROLE_") ? authority.getName() : "ROLE_" + authority.getName()))
