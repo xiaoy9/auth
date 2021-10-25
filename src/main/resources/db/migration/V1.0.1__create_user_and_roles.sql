@@ -8,7 +8,7 @@ CREATE TABLE `users`
     `image_url`          VARCHAR(512) NULL COMMENT '用户头像',
     `activated`          TINYINT      NOT NULL COMMENT '用户是否激活',
     `lang_key`           VARCHAR(64)  NOT NULL DEFAULT '0' COMMENT '用户惯用国家语言',
-    `activation_key`     VARCHAR(64)  NOT NULL DEFAULT '0' COMMENT '用户激活码',
+    `activation_key`     VARCHAR(64)  NULL COMMENT '用户激活码',
     `reset_key`          VARCHAR(64)  NOT NULL DEFAULT '0' COMMENT '用户密码重置口令',
     `reset_date`         TIMESTAMP    NULL COMMENT '上一次密码重置时间',
     `created_by`         VARCHAR(64)  NOT NULL DEFAULT '0' COMMENT '创建人',

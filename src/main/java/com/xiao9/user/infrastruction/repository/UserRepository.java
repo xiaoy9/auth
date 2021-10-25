@@ -21,8 +21,13 @@ public class UserRepository implements IUserRepository {
     @Override
     public Optional<User> findByUsernameOrEmail(String login) {
         if(new EmailValidator().isValid(login, null)) {
-            return userDao.findOneByEmail(login).map(UserConverter.INSTANCE::po2Entity);
+            return userDao.findOneByEmailIgnoreCase(login).map(UserConverter.INSTANCE::po2Entity);
         }
         return userDao.findOneByLogin(login).map(UserConverter.INSTANCE::po2Entity);
+    }
+
+    @Override
+    public void save(User user) {
+        userDao.save(UserConverter.INSTANCE.entity2PO(user));
     }
 }
