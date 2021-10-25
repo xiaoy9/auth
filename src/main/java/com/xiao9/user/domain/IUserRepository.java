@@ -6,4 +6,6 @@ public interface IUserRepository {
 
 
     Optional<User> findByUsernameOrEmail(String login);
+
+    void save(User user);
 }
