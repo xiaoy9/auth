@@ -8,7 +8,6 @@ import org.hibernate.annotations.BatchSize;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Set;
 
